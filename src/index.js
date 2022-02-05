@@ -14,10 +14,23 @@ async function getCurrentWeather(location) {
       { mode: 'cors' },
     );
     const fetchData = await response.json();
-    console.log(fetchData);
+    console.table(
+      fetchData.name,
+      fetchData.sys.country,
+      fetchData.weather[0].main,
+      fetchData.weather[0].description,
+      fetchData.main.temp,
+      fetchData.main.feels_like,
+      fetchData.main.temp_min,
+      fetchData.main.temp_max,
+      fetchData.main.pressure,
+      fetchData.main.humidity,
+      fetchData.wind.speed,
+      fetchData.wind.deg,
+    );
   } catch (error) {
     console.log(`There has been a problem fetching your weather data:${error}`);
   }
 }
 
-getCurrentWeather('Berlin');
+getCurrentWeather('Frankfurt');

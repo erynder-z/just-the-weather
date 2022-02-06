@@ -69,4 +69,28 @@ async function getCurrentWeather(location) {
   renderWeather(weatherArray[0]);
 }
 
-export default getCurrentWeather;
+async function getForecast(location) {
+  const query = location;
+  try {
+    // need to get latitute and longitude of city to call the openweathermap oneCall API
+    const geocodingResponst = await fetch(
+      `http://api.openweathermap.org/geo/1.0/direct?q=${query}&APPID=42aed38ac531db7e1130ba609d7e6b7e`,
+      { mode: 'cors' }
+    );
+    const geocodingFetchData = await geocodingResponst.json();
+
+    const { lat } = geocodingFetchData[0];
+    const { lon } = geocodingFetchData[0];
+
+    const response = await fetch(
+      `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&APPID=42aed38ac531db7e1130ba609d7e6b7e`,
+      { mode: 'cors' }
+    );
+    const fetchData = await response.json();
+    console.log(fetchData);
+  } catch (error) {
+    console.log(`There has been a problem fetching your weather data:${error}`);
+  }
+}
+
+export { getCurrentWeather, getForecast };

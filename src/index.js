@@ -1,6 +1,7 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
-import getCurrentWeather from './modules/getWeather';
+import { getCurrentWeather, getForecast } from './modules/getWeather';
+
 import { toggleUnits } from './modules/toggleUnits';
 
 const searchCity = (() => {
@@ -22,4 +23,5 @@ const searchCity = (() => {
 })();
 
 getCurrentWeather();
+getForecast('marburg');
 toggleUnits();

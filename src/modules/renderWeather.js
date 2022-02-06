@@ -1,12 +1,14 @@
 import { unit } from './toggleUnits';
 
+const currentWeatherContainer = document.getElementById('currentWeather');
+const forecastContainer = document.getElementById('forecast');
+
 const renderWeather = (weatherData) => {
   let temperatureUnit;
   let windUnit;
   unit === 'imperial' ? (temperatureUnit = '°F') : (temperatureUnit = '°C');
   unit === 'imperial' ? (windUnit = 'mph') : (windUnit = 'm/s');
 
-  const currentWeatherContainer = document.getElementById('currentWeather');
   const city = document.createElement('h1');
   const country = document.createElement('h3');
   const main = document.createElement('div');
@@ -21,6 +23,7 @@ const renderWeather = (weatherData) => {
   const windDeg = document.createElement('div');
 
   currentWeatherContainer.innerHTML = '';
+  forecastContainer.innerHTML = '';
 
   city.innerText = weatherData.name;
   country.innerText = weatherData.country;
@@ -54,8 +57,32 @@ const renderForecast = (weatherForecast) => {
   let windUnit;
   unit === 'imperial' ? (temperatureUnit = '°F') : (temperatureUnit = '°C');
   unit === 'imperial' ? (windUnit = 'mph') : (windUnit = 'm/s');
+
+  forecastContainer.innerHTML = '';
+
+  weatherForecast.forEach((element) => {
+    const dayForecastContainer = document.createElement('div');
+    const date = document.createElement('div');
+    const main = document.createElement('div');
+    const description = document.createElement('div');
+    const humidity = document.createElement('div');
+    const tempMax = document.createElement('div');
+    const tempMin = document.createElement('div');
+
+    date.innerText = element.date;
+    main.innerText = element.main;
+    description.innerText = element.description;
+    tempMax.innerText = `${element.tempMax}${temperatureUnit}`;
+    tempMin.innerText = `${element.tempMin}${temperatureUnit}`;
+    humidity.innerText = `${element.humidity}%`;
+    forecastContainer.appendChild(dayForecastContainer);
+    dayForecastContainer.appendChild(date);
+    dayForecastContainer.appendChild(main);
+    dayForecastContainer.appendChild(description);
+    dayForecastContainer.appendChild(tempMax);
+    dayForecastContainer.appendChild(tempMin);
+    dayForecastContainer.appendChild(humidity);
+  });
 };
 
-const forecastContainer = document.getElementById('forecast');
-
-export default renderWeather;
+export { renderWeather, renderForecast };

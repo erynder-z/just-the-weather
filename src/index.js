@@ -1,12 +1,16 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
-import { getCurrentWeather, getForecast } from './modules/getWeather';
-
+import {
+  getCurrentWeather,
+  getForecast,
+  myLocation,
+} from './modules/getWeather';
 import { toggleUnits } from './modules/toggleUnits';
 
-const searchCity = (() => {
+const appInterface = (() => {
   const searchbar = document.getElementById('searchInput');
   const searchButton = document.getElementById('searchBtn');
+  const forecastButton = document.getElementById('forecastBtn');
 
   searchButton.addEventListener('click', () => {
     const query = searchbar.value;
@@ -20,8 +24,12 @@ const searchCity = (() => {
       searchButton.click();
     }
   });
+
+  forecastButton.addEventListener('click', () => {
+    getForecast(myLocation);
+  });
 })();
 
 getCurrentWeather();
-getForecast('marburg');
+
 toggleUnits();

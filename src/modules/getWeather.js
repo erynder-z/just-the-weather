@@ -1,9 +1,8 @@
-import renderWeather from './renderWeather';
+import { renderWeather, renderForecast } from './renderWeather';
 import { unit } from './toggleUnits';
 
 let myLocation;
 const weatherArray = [];
-const forecast = [];
 
 async function getCurrentWeather(location) {
   try {
@@ -70,6 +69,7 @@ async function getCurrentWeather(location) {
 }
 
 async function getForecast(location) {
+  const forecast = [];
   const query = location;
   try {
     // need to get latitute and longitude of city to call the openweathermap oneCall API
@@ -115,10 +115,11 @@ async function getForecast(location) {
       forecast.push(currentDay);
     });
     forecast.shift();
+    renderForecast(forecast);
     console.log(forecast);
   } catch (error) {
     console.log(`There has been a problem fetching your weather data:${error}`);
   }
 }
 
-export { getCurrentWeather, getForecast };
+export { getCurrentWeather, getForecast, myLocation };

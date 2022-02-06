@@ -1,6 +1,7 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import getCurrentWeather from './modules/getWeather';
+import renderWeather from './modules/renderWeather';
 
 const searchCity = (() => {
   const searchbar = document.getElementById('searchInput');

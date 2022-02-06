@@ -1,3 +1,5 @@
+import renderWeather from './renderWeather';
+
 let myLocation;
 const weatherArray = [];
 
@@ -9,7 +11,7 @@ async function getCurrentWeather(location) {
     myLocation = location;
     const response = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${myLocation}&APPID=42aed38ac531db7e1130ba609d7e6b7e`,
-      { mode: 'cors' },
+      { mode: 'cors' }
     );
     const fetchData = await response.json();
 
@@ -25,7 +27,7 @@ async function getCurrentWeather(location) {
       pressure,
       humidity,
       windSpeed,
-      windDeg,
+      windDeg
     ) => ({
       name,
       country,
@@ -53,7 +55,7 @@ async function getCurrentWeather(location) {
       fetchData.main.pressure,
       fetchData.main.humidity,
       fetchData.wind.speed,
-      fetchData.wind.deg,
+      fetchData.wind.deg
     );
 
     weatherArray.splice(0, 1, newLocation);
@@ -62,6 +64,7 @@ async function getCurrentWeather(location) {
   }
 
   console.log(weatherArray);
+  renderWeather(weatherArray[0]);
 }
 
 export default getCurrentWeather;

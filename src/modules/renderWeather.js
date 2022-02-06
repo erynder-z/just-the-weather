@@ -49,4 +49,13 @@ const renderWeather = (weatherData) => {
   currentWeatherContainer.appendChild(windDeg);
 };
 
+const renderForecast = (weatherForecast) => {
+  let temperatureUnit;
+  let windUnit;
+  unit === 'imperial' ? (temperatureUnit = '°F') : (temperatureUnit = '°C');
+  unit === 'imperial' ? (windUnit = 'mph') : (windUnit = 'm/s');
+};
+
+const forecastContainer = document.getElementById('forecast');
+
 export default renderWeather;

@@ -1,7 +1,7 @@
-import getCurrentWeather from './getWeather';
+import { getCurrentWeather } from './getWeather';
 
 let useImperial = false;
-let unit;
+let unit = 'metric';
 
 const toggleUnits = () => {
   const toggle = document.getElementById('unitBtn');

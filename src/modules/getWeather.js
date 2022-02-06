@@ -3,6 +3,7 @@ import { unit } from './toggleUnits';
 
 let myLocation;
 const weatherArray = [];
+const forecast = [];
 
 async function getCurrentWeather(location) {
   try {
@@ -65,7 +66,6 @@ async function getCurrentWeather(location) {
     console.log(`There has been a problem fetching your weather data:${error}`);
   }
 
-  console.log(weatherArray);
   renderWeather(weatherArray[0]);
 }
 
@@ -86,7 +86,36 @@ async function getForecast(location) {
       { mode: 'cors' }
     );
     const fetchData = await response.json();
-    console.log(fetchData);
+
+    const forecastFactory = (
+      date,
+      main,
+      description,
+      tempMin,
+      tempMax,
+      humidity
+    ) => ({
+      date,
+      main,
+      description,
+      tempMin,
+      tempMax,
+      humidity,
+    });
+
+    fetchData.daily.forEach((element) => {
+      const currentDay = forecastFactory(
+        element.dt,
+        element.weather[0].main,
+        element.weather[0].description,
+        element.temp.min,
+        element.temp.max,
+        element.humidity
+      );
+      forecast.push(currentDay);
+    });
+    forecast.shift();
+    console.log(forecast);
   } catch (error) {
     console.log(`There has been a problem fetching your weather data:${error}`);
   }

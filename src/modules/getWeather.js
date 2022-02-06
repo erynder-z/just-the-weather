@@ -10,7 +10,7 @@ async function getCurrentWeather(location) {
     }
     myLocation = location;
     const response = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${myLocation}&APPID=42aed38ac531db7e1130ba609d7e6b7e`,
+      `http://api.openweathermap.org/data/2.5/weather?q=${myLocation}&units=metric&APPID=42aed38ac531db7e1130ba609d7e6b7e`,
       { mode: 'cors' }
     );
     const fetchData = await response.json();

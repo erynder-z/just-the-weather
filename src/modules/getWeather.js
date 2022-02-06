@@ -82,7 +82,7 @@ async function getForecast(location) {
     const { lon } = geocodingFetchData[0];
 
     const response = await fetch(
-      `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&APPID=42aed38ac531db7e1130ba609d7e6b7e`,
+      `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=${unit}&APPID=42aed38ac531db7e1130ba609d7e6b7e`,
       { mode: 'cors' }
     );
     const fetchData = await response.json();

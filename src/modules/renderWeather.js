@@ -1,5 +1,11 @@
+import { unit } from './toggleUnits';
+
 const renderWeather = (weatherData) => {
-  console.log(weatherData);
+  let temperatureUnit;
+  let windUnit;
+  unit === 'imperial' ? (temperatureUnit = '°F') : (temperatureUnit = '°C');
+  unit === 'imperial' ? (windUnit = 'mph') : (windUnit = 'm/s');
+
   const currentWeatherContainer = document.getElementById('currentWeather');
   const city = document.createElement('h1');
   const country = document.createElement('h3');
@@ -14,17 +20,19 @@ const renderWeather = (weatherData) => {
   const windSpeed = document.createElement('div');
   const windDeg = document.createElement('div');
 
+  currentWeatherContainer.innerHTML = '';
+
   city.innerText = weatherData.name;
   country.innerText = weatherData.country;
   main.innerText = weatherData.main;
   description.innerText = weatherData.description;
-  temp.innerText = weatherData.temp;
-  feelsLike.innerText = `Feels like:${weatherData.feelsLike}`;
-  tempMin.innerText = `Max: ${weatherData.tempMin}`;
-  tempMax.innerText = `Min: ${weatherData.tempMax}`;
+  temp.innerText = `${weatherData.temp}${temperatureUnit}`;
+  feelsLike.innerText = `Feels like: ${weatherData.feelsLike}${temperatureUnit}`;
+  tempMin.innerText = `Max: ${weatherData.tempMin}${temperatureUnit}`;
+  tempMax.innerText = `Min: ${weatherData.tempMax}${temperatureUnit}`;
   pressure.innerText = `Pressure: ${weatherData.pressure}mbar`;
   humidity.innerText = `Humidity: ${weatherData.humidity}%`;
-  windSpeed.innerText = `Wind speed: ${weatherData.windSpeed}`;
+  windSpeed.innerText = `Wind speed: ${weatherData.windSpeed} ${windUnit}`;
   windDeg.innerText = `Wind from: ${weatherData.windDeg}`;
 
   currentWeatherContainer.appendChild(city);

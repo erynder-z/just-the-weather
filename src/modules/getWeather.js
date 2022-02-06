@@ -1,4 +1,5 @@
 let myLocation;
+const weatherArray = [];
 
 async function getCurrentWeather(location) {
   try {
@@ -11,7 +12,36 @@ async function getCurrentWeather(location) {
       { mode: 'cors' },
     );
     const fetchData = await response.json();
-    console.table(
+
+    const weatherFactory = (
+      name,
+      country,
+      main,
+      description,
+      temp,
+      feelsLike,
+      tempMin,
+      tempMax,
+      pressure,
+      humidity,
+      windSpeed,
+      windDeg,
+    ) => ({
+      name,
+      country,
+      main,
+      description,
+      temp,
+      feelsLike,
+      tempMin,
+      tempMax,
+      pressure,
+      humidity,
+      windSpeed,
+      windDeg,
+    });
+
+    const newLocation = weatherFactory(
       fetchData.name,
       fetchData.sys.country,
       fetchData.weather[0].main,
@@ -25,9 +55,13 @@ async function getCurrentWeather(location) {
       fetchData.wind.speed,
       fetchData.wind.deg,
     );
+
+    weatherArray.splice(0, 1, newLocation);
   } catch (error) {
     console.log(`There has been a problem fetching your weather data:${error}`);
   }
+
+  console.log(weatherArray);
 }
 
 export default getCurrentWeather;

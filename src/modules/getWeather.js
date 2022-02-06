@@ -73,12 +73,11 @@ async function getForecast(location) {
   const query = location;
   try {
     // need to get latitute and longitude of city to call the openweathermap oneCall API
-    const geocodingResponst = await fetch(
+    const geocodingResponse = await fetch(
       `http://api.openweathermap.org/geo/1.0/direct?q=${query}&APPID=42aed38ac531db7e1130ba609d7e6b7e`,
       { mode: 'cors' }
     );
-    const geocodingFetchData = await geocodingResponst.json();
-
+    const geocodingFetchData = await geocodingResponse.json();
     const { lat } = geocodingFetchData[0];
     const { lon } = geocodingFetchData[0];
 

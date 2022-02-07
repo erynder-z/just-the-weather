@@ -1,3 +1,4 @@
+import { fromUnixTime, format } from 'date-fns';
 import { unit } from './toggleUnits';
 
 const currentWeatherContainer = document.getElementById('currentWeather');
@@ -69,7 +70,10 @@ const renderForecast = (weatherForecast) => {
     const tempMax = document.createElement('div');
     const tempMin = document.createElement('div');
 
-    date.innerText = element.date;
+    const longDate = fromUnixTime(element.date);
+    const formatedDate = format(longDate, 'EEEE, do LLLL');
+
+    date.innerText = formatedDate;
     main.innerText = element.main;
     description.innerText = element.description;
     tempMax.innerText = `${element.tempMax}${temperatureUnit}`;

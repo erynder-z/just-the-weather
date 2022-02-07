@@ -1,5 +1,8 @@
 import { fromUnixTime, format } from 'date-fns';
+import colorizeBackground from './background';
 import { unit } from './toggleUnits';
+
+let currentWeather;
 
 const currentWeatherContainer = document.getElementById('currentWeather');
 const forecastContainer = document.getElementById('forecast');
@@ -51,6 +54,8 @@ const renderWeather = (weatherData) => {
   currentWeatherContainer.appendChild(humidity);
   currentWeatherContainer.appendChild(windSpeed);
   currentWeatherContainer.appendChild(windDeg);
+
+  colorizeBackground(weatherData.description);
 };
 
 const renderForecast = (weatherForecast) => {

@@ -7,8 +7,8 @@
   --rain: #334f8b;
 
   --thunderstorm: #a471d4;
-  --snow: #36332a;
-  --mist: #616d69;
+  --snow: #f0f0f0;
+  --mist: #889c96;
   --night: #1f2d3d;
 }
 
@@ -62,4 +62,43 @@ body {
     gap: 20px;
     text-align: center;
   }
+}
+
+.clear-sky {
+  background-color: var(--clearSky);
+}
+
+.few-clouds {
+  background-color: var(--fewClouds);
+}
+
+.scattered-clouds {
+  background-color: var(--scatteredClouds);
+}
+
+.broken-clouds {
+  background-color: var(--brokenClouds);
+}
+
+.shower-rain {
+  background-color: var(--showerRain);
+}
+
+.rain {
+  background-color: var(--rain);
+}
+
+.thunderstorm {
+  background-color: var(--thunderstorm);
+}
+
+.snow {
+  background-color: var(--snow);
+}
+
+.mist {
+  background-color: var(--mist);
+}
+
+.night {
 }

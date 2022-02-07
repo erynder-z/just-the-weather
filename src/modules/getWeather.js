@@ -3,6 +3,7 @@ import { unit } from './toggleUnits';
 
 let myLocation;
 const weatherArray = [];
+let currentWeather;
 
 async function getCurrentWeather(location) {
   try {

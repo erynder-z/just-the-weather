@@ -63,6 +63,7 @@ body {
 
 .forecastBtn-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -70,7 +71,12 @@ body {
   margin: 25px 0;
   background-color: tomato;
   border: none;
+  transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
+/* .forecastBtn-container.expand {
+  justify-content: space-evenly;
+} */
 
 .forecast-button {
   background: none;
@@ -81,6 +87,23 @@ body {
   display: flex;
   justify-content: space-around;
   width: 100vw;
+  transition: all 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.expand {
+  height: 5rem;
+  transition: all 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.expand-icon {
+  transition: all 250ms linear;
+}
+
+.forecastBtn-container.expand > .expand-icon {
+  transform: rotate(180deg) scale(200%);
+  transition: all 250ms linear;
+  position: relative;
+  left: 8rem;
 }
 
 .clear-sky {

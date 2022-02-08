@@ -2,8 +2,7 @@ import { fromUnixTime, format } from 'date-fns';
 import colorizeBackground from './background';
 import { unit } from './toggleUnits';
 
-let currentWeather;
-
+const today = format(new Date(), 'yyyy-MM-dd');
 const currentWeatherContainer = document.getElementById('currentWeather');
 const forecastContainer = document.getElementById('forecast');
 

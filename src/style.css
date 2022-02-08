@@ -105,6 +105,9 @@ body {
   position: relative;
   left: 8rem;
 }
+.icon {
+  opacity: 0.75;
+}
 
 .clear-sky {
   background-color: var(--clearSky);

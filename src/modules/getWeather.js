@@ -117,7 +117,6 @@ async function getForecast(location) {
     });
     forecast.shift();
     renderForecast(forecast);
-    console.log(forecast);
   } catch (error) {
     console.log(`There has been a problem fetching your weather data:${error}`);
   }

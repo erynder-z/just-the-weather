@@ -1,5 +1,6 @@
 import { fromUnixTime, format } from 'date-fns';
 import colorizeBackground from './background';
+import { getIcon } from './icons';
 import { unit } from './toggleUnits';
 
 const today = format(new Date(), 'yyyy-MM-dd');
@@ -14,6 +15,7 @@ const renderWeather = (weatherData) => {
 
   const city = document.createElement('h1');
   const country = document.createElement('h3');
+  const icon = document.createElement('img');
   const main = document.createElement('div');
   const description = document.createElement('div');
   const temp = document.createElement('div');
@@ -30,6 +32,13 @@ const renderWeather = (weatherData) => {
 
   city.innerText = weatherData.name;
   country.innerText = weatherData.country;
+
+  if (weatherData.main === 'Clouds') {
+    icon.src = `../src/icons/${getIcon(weatherData.description)}.png`;
+  } else {
+    icon.src = `../src/icons/${getIcon(weatherData.main)}.png`;
+  }
+  icon.classList.add('icon');
   main.innerText = weatherData.main;
   description.innerText = weatherData.description;
   temp.innerText = `${weatherData.temp}${temperatureUnit}`;
@@ -43,6 +52,7 @@ const renderWeather = (weatherData) => {
 
   currentWeatherContainer.appendChild(city);
   currentWeatherContainer.appendChild(country);
+  currentWeatherContainer.append(icon);
   currentWeatherContainer.appendChild(main);
   currentWeatherContainer.appendChild(description);
   currentWeatherContainer.appendChild(temp);

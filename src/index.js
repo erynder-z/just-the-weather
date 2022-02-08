@@ -9,6 +9,7 @@ import {
   myLocation,
 } from './modules/getWeather';
 import { toggleUnits } from './modules/toggleUnits';
+import clearSky from './modules/icons';
 
 const appInterface = (() => {
   const searchbar = document.getElementById('searchInput');

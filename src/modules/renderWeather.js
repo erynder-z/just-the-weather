@@ -3,7 +3,7 @@ import colorizeBackground from './background';
 import { getIcon } from './icons';
 import { unit } from './toggleUnits';
 
-const today = format(new Date(), 'yyyy-MM-dd');
+/* const today = format(new Date(), 'yyyy-MM-dd'); */
 const currentWeatherContainer = document.getElementById('currentWeather');
 const forecastContainer = document.getElementById('forecast');
 
@@ -16,7 +16,7 @@ const renderWeather = (weatherData) => {
   const city = document.createElement('h1');
   const country = document.createElement('h3');
   const icon = document.createElement('img');
-  const main = document.createElement('div');
+  /* const main = document.createElement('div'); */
   const description = document.createElement('div');
   const temp = document.createElement('div');
   const feelsLike = document.createElement('div');
@@ -39,7 +39,7 @@ const renderWeather = (weatherData) => {
     icon.src = `../src/icons/${getIcon(weatherData.main)}.png`;
   }
   icon.classList.add('icon');
-  main.innerText = weatherData.main;
+  /* main.innerText = weatherData.main; */
   description.innerText = weatherData.description;
   temp.innerText = `${weatherData.temp}${temperatureUnit}`;
   feelsLike.innerText = `Feels like: ${weatherData.feelsLike}${temperatureUnit}`;
@@ -53,7 +53,7 @@ const renderWeather = (weatherData) => {
   currentWeatherContainer.appendChild(city);
   currentWeatherContainer.appendChild(country);
   currentWeatherContainer.append(icon);
-  currentWeatherContainer.appendChild(main);
+  /*   currentWeatherContainer.appendChild(main); */
   currentWeatherContainer.appendChild(description);
   currentWeatherContainer.appendChild(temp);
   currentWeatherContainer.appendChild(feelsLike);
@@ -77,7 +77,13 @@ const renderForecast = (weatherForecast) => {
 
   weatherForecast.forEach((element) => {
     const dayForecastContainer = document.createElement('div');
+    dayForecastContainer.classList.add('day-container');
+    const conditionContainer = document.createElement('div');
+    conditionContainer.classList.add('status');
+    const detailsContainer = document.createElement('div');
+    detailsContainer.classList.add('forecast-details');
     const date = document.createElement('div');
+    date.classList.add('day');
     const main = document.createElement('div');
     const description = document.createElement('div');
     const humidity = document.createElement('div');
@@ -88,18 +94,22 @@ const renderForecast = (weatherForecast) => {
     const formatedDate = format(longDate, 'EEEE, do LLLL');
 
     date.innerText = formatedDate;
-    main.innerText = element.main;
+    /* main.innerText = element.main; */
     description.innerText = element.description;
-    tempMax.innerText = `${element.tempMax}${temperatureUnit}`;
-    tempMin.innerText = `${element.tempMin}${temperatureUnit}`;
-    humidity.innerText = `${element.humidity}%`;
+    tempMax.innerText = `Max: ${element.tempMax}${temperatureUnit}`;
+    tempMin.innerText = `Min: ${element.tempMin}${temperatureUnit}`;
+    humidity.innerText = `Humidity: ${element.humidity}%`;
     forecastContainer.appendChild(dayForecastContainer);
-    dayForecastContainer.appendChild(date);
-    dayForecastContainer.appendChild(main);
-    dayForecastContainer.appendChild(description);
-    dayForecastContainer.appendChild(tempMax);
-    dayForecastContainer.appendChild(tempMin);
-    dayForecastContainer.appendChild(humidity);
+    dayForecastContainer.appendChild(conditionContainer);
+    dayForecastContainer.appendChild(detailsContainer);
+    detailsContainer.appendChild(date);
+    detailsContainer.appendChild(main);
+    detailsContainer.appendChild(description);
+    detailsContainer.appendChild(tempMax);
+    detailsContainer.appendChild(tempMin);
+    detailsContainer.appendChild(humidity);
+
+    conditionContainer.classList.add(element.description.replace(/\s/g, '-'));
   });
 };
 

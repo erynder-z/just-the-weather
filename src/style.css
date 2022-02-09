@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 :root {
   --clearSky: #f9c74f;
   --fewClouds: #a9d6e5;
@@ -23,8 +25,10 @@ body {
   padding: 0;
   margin: 0;
   height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+
+  font-family: 'Open Sans', sans-serif, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
 .head-container {
@@ -61,6 +65,8 @@ body {
   align-items: center;
   width: 100vw;
   padding: 2vh 0;
+  height: 46vh;
+  text-shadow: 0 0 1px #00000080;
 }
 
 .current-weather-container > h3 {
@@ -92,11 +98,12 @@ body {
   justify-content: space-around;
   width: 100vw;
   transition: all 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  height: 40vh;
 }
 
 .forecastBtn-container.expand ~ .forecast-container {
   background-color: rgba(0, 0, 0, 0.2);
-  height: 45.5vh;
+  height: 42vh;
   justify-content: center;
   align-items: center;
 }
@@ -134,8 +141,17 @@ body {
   margin-right: 1rem;
 }
 
+.move {
+  position: relative;
+  top: 30%;
+  transform: translateY(-30%);
+  transition: all 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  line-height: 1.5rem;
+  font-weight: bold;
+}
+
 .expand {
-  height: 4rem;
+  height: 7vh;
   transition: all 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: static;
 }
@@ -253,9 +269,19 @@ body {
 .night {
 }
 
-@media all and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
   form {
     display: flex;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    margin: 1rem 0 0.5rem 0;
+  }
+
+  h3 {
+    font-size: 1rem;
+    margin: 0;
   }
 
   .head-container > * {
@@ -267,10 +293,31 @@ body {
     border-right: solid 1px black;
   }
 
-  .forecast-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    text-align: center;
+  .current-weather-container {
+    justify-content: flex-start;
+    padding: 0 0 1rem 0;
+  }
+
+  img {
+    height: 80px;
+  }
+
+  .forecastBtn-container.expand {
+    line-height: 0.8rem;
+  }
+
+  .forecastBtn-container.expand ~ .forecast-container {
+    background-color: rgba(0, 0, 0, 0.2);
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-x: scroll;
+  }
+
+  .day-container {
+    margin: 1rem 0;
+  }
+
+  .status {
+    position: static;
   }
 }

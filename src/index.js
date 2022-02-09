@@ -14,6 +14,7 @@ import clearSky from './modules/icons';
 const appInterface = (() => {
   const searchbar = document.getElementById('searchInput');
   const searchButton = document.getElementById('searchBtn');
+  const currentWeatherContainer = document.getElementById('currentWeather');
   const forecastBtnContainer = document.querySelector('.forecastBtn-container');
   const forecast = document.getElementById('forecast');
   const now = format(new Date(), 'dd.MM@H:mm:ss');
@@ -36,6 +37,7 @@ const appInterface = (() => {
     async function displayForecast() {
       await getForecast(myLocation);
       forecastBtnContainer.classList.toggle('expand');
+      currentWeatherContainer.classList.toggle('move');
       if (forecastBtnContainer.classList.contains('expand')) {
         forecastTimestamp.innerText = `as of: ${now}`;
         forecastBtnContainer.appendChild(forecastTimestamp);

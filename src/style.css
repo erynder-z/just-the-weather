@@ -1,14 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 :root {
-  --clearSky: #f9c74f;
-  --fewClouds: #a9d6e5;
-  --scatteredClouds: #89c2d9;
-  --brokenClouds: #61a5c2;
-  --overcastClouds: #2c7da0;
-  --showerRain: #2a6f97;
-  --rain: #014f86;
-
+  --clearSky: #ffb703;
+  --fewClouds: #0077b6;
+  --scatteredClouds: #4ea8de;
+  --brokenClouds: #d9d9d9;
+  --overcastClouds: #8d99ae;
+  --showerRain: #82c0cc;
+  --rain: #0091ad;
   --thunderstorm: #a471d4;
   --snow: #f0f0f0;
   --mist: #889c96;

@@ -13,7 +13,7 @@ async function getCurrentWeather(location) {
 
     myLocation = location;
     const response = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${myLocation}&units=${unit}&APPID=42aed38ac531db7e1130ba609d7e6b7e`,
+      `https://api.openweathermap.org/data/2.5/weather?q=${myLocation}&units=${unit}&APPID=42aed38ac531db7e1130ba609d7e6b7e`,
       { mode: 'cors' }
     );
     const fetchData = await response.json();
@@ -75,7 +75,7 @@ async function getForecast(location) {
   try {
     // need to get latitute and longitude of city to call the openweathermap oneCall API
     const geocodingResponse = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${query}&APPID=42aed38ac531db7e1130ba609d7e6b7e`,
+      `https://api.openweathermap.org/geo/1.0/direct?q=${query}&APPID=42aed38ac531db7e1130ba609d7e6b7e`,
       { mode: 'cors' }
     );
     const geocodingFetchData = await geocodingResponse.json();
@@ -83,7 +83,7 @@ async function getForecast(location) {
     const { lon } = geocodingFetchData[0];
 
     const response = await fetch(
-      `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=${unit}&APPID=42aed38ac531db7e1130ba609d7e6b7e`,
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=${unit}&APPID=42aed38ac531db7e1130ba609d7e6b7e`,
       { mode: 'cors' }
     );
     const fetchData = await response.json();

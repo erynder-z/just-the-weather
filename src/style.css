@@ -101,9 +101,13 @@ body {
   height: 3rem;
   background-color: tomato;
   border: none;
-  transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 200ms linear;
   position: absolute;
   bottom: 0;
+}
+
+.forecastBtn-container.expand {
+  transition: all 200ms linear;
 }
 
 .forecast-button {
@@ -115,7 +119,7 @@ body {
   display: flex;
   justify-content: space-around;
   width: 100vw;
-  transition: all 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 100ms linear;
   height: 40vh;
 }
 
@@ -170,7 +174,7 @@ body {
 
 .expand {
   height: 7vh;
-  transition: all 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 100ms linear;
   position: static;
 }
 

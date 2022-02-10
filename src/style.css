@@ -265,7 +265,8 @@ body {
   transition: background-color 1000ms linear;
 }
 
-.night {
+.dark {
+  filter: invert(100%);
 }
 
 @media only screen and (max-width: 600px) {

@@ -11,9 +11,11 @@ const colorizeBackground = (weatherDataDescription) => {
   ) {
     document.getElementById('currentWeather').style.color = 'whitesmoke';
     document.getElementById('forecast').style.color = 'whitesmoke';
+    document.getElementById('activeIcon').classList.add('dark');
   } else {
     document.getElementById('currentWeather').style.color = 'black';
     document.getElementById('forecast').style.color = 'black';
+    document.getElementById('activeIcon').classList.remove('dark');
   }
 };
 

@@ -39,6 +39,7 @@ const renderWeather = (weatherData) => {
     icon.src = getIcon(weatherData.main);
   }
 
+  icon.setAttribute('id', 'activeIcon');
   icon.classList.add('icon');
   /* main.innerText = weatherData.main; */
   description.innerText = weatherData.description;

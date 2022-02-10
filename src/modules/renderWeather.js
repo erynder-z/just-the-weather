@@ -3,7 +3,6 @@ import colorizeBackground from './background';
 import { getIcon } from './icons';
 import { unit } from './toggleUnits';
 
-/* const today = format(new Date(), 'yyyy-MM-dd'); */
 const currentWeatherContainer = document.getElementById('currentWeather');
 const forecastContainer = document.getElementById('forecast');
 
@@ -42,7 +41,6 @@ const renderWeather = (weatherData) => {
 
   icon.setAttribute('id', 'activeIcon');
   icon.classList.add('icon');
-  /* main.innerText = weatherData.main; */
   description.innerText = weatherData.description;
   temp.innerText = `${weatherData.temp}${temperatureUnit}`;
   feelsLike.innerText = `Feels like: ${weatherData.feelsLike}${temperatureUnit}`;
@@ -56,7 +54,6 @@ const renderWeather = (weatherData) => {
   currentWeatherContainer.appendChild(city);
   currentWeatherContainer.appendChild(country);
   currentWeatherContainer.append(icon);
-  /*   currentWeatherContainer.appendChild(main); */
   currentWeatherContainer.appendChild(description);
   currentWeatherContainer.appendChild(temp);
   currentWeatherContainer.appendChild(feelsLike);
@@ -100,7 +97,6 @@ const renderForecast = (weatherForecast) => {
 
     day.innerText = formatedDateDay;
     date.innerText = formatedDate;
-    /* main.innerText = element.main; */
     description.innerText = element.description;
     tempMax.innerText = `Max: ${element.tempMax}${temperatureUnit}`;
     tempMin.innerText = `Min: ${element.tempMin}${temperatureUnit}`;

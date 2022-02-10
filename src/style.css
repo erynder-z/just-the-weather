@@ -103,13 +103,12 @@ body {
 .forecastBtn-container.expand ~ .forecast-container {
   background-color: rgba(0, 0, 0, 0.2);
   height: 42vh;
-  justify-content: center;
   align-items: center;
 }
 
 .day-container {
   display: flex;
-  line-height: 1.5rem;
+  line-height: 1.1rem;
   height: 25vh;
 }
 
@@ -138,6 +137,7 @@ body {
 .forecast-details {
   text-align: center;
   margin-right: 1rem;
+  justify-content: flex-end;
 }
 
 .move {
@@ -164,9 +164,6 @@ body {
   transition: all 250ms linear;
   position: relative;
   left: 8rem;
-}
-.icon {
-  opacity: 0.75;
 }
 
 .clear-sky {
@@ -304,6 +301,7 @@ body {
 
   .forecastBtn-container.expand {
     line-height: 0.8rem;
+    padding: 2rem 0;
   }
 
   .forecastBtn-container.expand ~ .forecast-container {

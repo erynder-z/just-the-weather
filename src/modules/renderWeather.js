@@ -84,8 +84,9 @@ const renderForecast = (weatherForecast) => {
     conditionContainer.classList.add('status');
     const detailsContainer = document.createElement('div');
     detailsContainer.classList.add('forecast-details');
+    const day = document.createElement('div');
+    day.classList.add('day');
     const date = document.createElement('div');
-    date.classList.add('day');
     const main = document.createElement('div');
     const description = document.createElement('div');
     const humidity = document.createElement('div');
@@ -93,8 +94,10 @@ const renderForecast = (weatherForecast) => {
     const tempMin = document.createElement('div');
 
     const longDate = fromUnixTime(element.date);
-    const formatedDate = format(longDate, 'EEEE, do LLLL');
+    const formatedDateDay = format(longDate, 'EEEE');
+    const formatedDate = format(longDate, 'do MMM');
 
+    day.innerText = formatedDateDay;
     date.innerText = formatedDate;
     /* main.innerText = element.main; */
     description.innerText = element.description;
@@ -104,6 +107,7 @@ const renderForecast = (weatherForecast) => {
     forecastContainer.appendChild(dayForecastContainer);
     dayForecastContainer.appendChild(conditionContainer);
     dayForecastContainer.appendChild(detailsContainer);
+    detailsContainer.appendChild(day);
     detailsContainer.appendChild(date);
     detailsContainer.appendChild(main);
     detailsContainer.appendChild(description);

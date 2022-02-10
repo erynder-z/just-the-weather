@@ -14,6 +14,7 @@ const renderWeather = (weatherData) => {
   unit === 'imperial' ? (windUnit = 'mph') : (windUnit = 'm/s');
 
   const city = document.createElement('h1');
+  city.setAttribute('id', 'currentCity');
   const country = document.createElement('h3');
   const icon = document.createElement('img');
   /* const main = document.createElement('div'); */
@@ -45,8 +46,8 @@ const renderWeather = (weatherData) => {
   description.innerText = weatherData.description;
   temp.innerText = `${weatherData.temp}${temperatureUnit}`;
   feelsLike.innerText = `Feels like: ${weatherData.feelsLike}${temperatureUnit}`;
-  tempMin.innerText = `Max: ${weatherData.tempMin}${temperatureUnit}`;
-  tempMax.innerText = `Min: ${weatherData.tempMax}${temperatureUnit}`;
+  tempMax.innerText = `Max: ${weatherData.tempMax}${temperatureUnit}`;
+  tempMin.innerText = `Min: ${weatherData.tempMin}${temperatureUnit}`;
   pressure.innerText = `Pressure: ${weatherData.pressure}mbar`;
   humidity.innerText = `Humidity: ${weatherData.humidity}%`;
   windSpeed.innerText = `Wind speed: ${weatherData.windSpeed} ${windUnit}`;
@@ -59,8 +60,8 @@ const renderWeather = (weatherData) => {
   currentWeatherContainer.appendChild(description);
   currentWeatherContainer.appendChild(temp);
   currentWeatherContainer.appendChild(feelsLike);
-  currentWeatherContainer.appendChild(tempMin);
   currentWeatherContainer.appendChild(tempMax);
+  currentWeatherContainer.appendChild(tempMin);
   currentWeatherContainer.appendChild(pressure);
   currentWeatherContainer.appendChild(humidity);
   currentWeatherContainer.appendChild(windSpeed);

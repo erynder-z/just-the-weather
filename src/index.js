@@ -21,9 +21,16 @@ const appInterface = (() => {
   const forecastTimestamp = document.createElement('div');
 
   searchButton.addEventListener('click', () => {
+    const currentCity = document.getElementById('currentCity').innerHTML;
     const query = searchbar.value;
     searchbar.value = '';
     getCurrentWeather(query);
+    if (
+      document.querySelector('.forecastBtn-container').className ===
+      'forecastBtn-container expand'
+    ) {
+      getForecast(currentCity);
+    }
   });
 
   searchbar.addEventListener('keydown', (event) => {

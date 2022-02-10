@@ -2,7 +2,6 @@ import { getCurrentWeather, getForecast } from './getWeather';
 
 let useImperial = false;
 let unit = 'metric';
-const forecastContainer = document.getElementById('forecast');
 
 const toggleUnits = () => {
   const toggle = document.getElementById('unitBtn');

@@ -11,6 +11,9 @@ const colorizeBackground = (weatherDataDescription) => {
   ) {
     document.getElementById('currentWeather').style.color = 'whitesmoke';
     document.getElementById('forecast').style.color = 'whitesmoke';
+  } else {
+    document.getElementById('currentWeather').style.color = 'black';
+    document.getElementById('forecast').style.color = 'black';
   }
 };
 

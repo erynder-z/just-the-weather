@@ -34,10 +34,11 @@ const renderWeather = (weatherData) => {
   country.innerText = weatherData.country;
 
   if (weatherData.main === 'Clouds') {
-    icon.src = `../src/icons/${getIcon(weatherData.description)}.png`;
+    icon.src = getIcon(weatherData.description);
   } else {
-    icon.src = `../src/icons/${getIcon(weatherData.main)}.png`;
+    icon.src = getIcon(weatherData.main);
   }
+
   icon.classList.add('icon');
   /* main.innerText = weatherData.main; */
   description.innerText = weatherData.description;

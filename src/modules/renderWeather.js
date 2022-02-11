@@ -33,7 +33,9 @@ const renderWeather = (weatherData) => {
 
   city.innerText = weatherData.name;
   country.innerText = weatherData.country;
+
   localTime.innerText = ` local time: ${getLocalTime(weatherData.timezone)}`;
+  setInterval(runClock, 1000, weatherData.timezone);
 
   if (weatherData.main === 'Clouds') {
     icon.src = getIcon(
@@ -79,6 +81,10 @@ const renderWeather = (weatherData) => {
   currentWeatherContainer.appendChild(windDeg);
 
   colorizeBackground(weatherData.description);
+
+  function runClock(timeData) {
+    localTime.innerText = ` local time: ${getLocalTime(timeData)}`;
+  }
 };
 
 const renderForecast = (weatherForecast) => {

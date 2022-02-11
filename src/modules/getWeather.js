@@ -1,5 +1,5 @@
 import { renderWeather, renderForecast } from './renderWeather';
-import { unit } from './toggleUnits';
+import { unit } from './units';
 
 let myLocation;
 const weatherArray = [];

@@ -8,7 +8,7 @@ import {
   getForecast,
   myLocation,
 } from './modules/getWeather';
-import { toggleUnits } from './modules/toggleUnits';
+import { toggleUnits } from './modules/units';
 
 const appInterface = (() => {
   const searchbar = document.getElementById('searchInput');

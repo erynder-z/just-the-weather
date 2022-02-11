@@ -4,7 +4,13 @@ import { unit } from './units';
 let myLocation;
 const weatherArray = [];
 
+function toggleOverlay() {
+  const overlay = document.getElementById('overlay');
+  overlay.classList.toggle('active');
+}
+
 async function getCurrentWeather(location) {
+  toggleOverlay();
   try {
     if (!location) {
       location = 'Marburg';
@@ -66,9 +72,11 @@ async function getCurrentWeather(location) {
   }
 
   renderWeather(weatherArray[0]);
+  toggleOverlay();
 }
 
 async function getForecast(location) {
+  toggleOverlay();
   const forecast = [];
   const query = location;
   try {
@@ -119,6 +127,7 @@ async function getForecast(location) {
   } catch (error) {
     console.log(`There has been a problem fetching your weather data:${error}`);
   }
+  toggleOverlay();
 }
 
 export { getCurrentWeather, getForecast, myLocation };

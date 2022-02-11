@@ -1,7 +1,7 @@
 import { fromUnixTime, format } from 'date-fns';
 import colorizeBackground from './background';
 import { getIcon } from './icons';
-import { unit } from './toggleUnits';
+import { getWindDirection, unit } from './toggleUnits';
 
 const currentWeatherContainer = document.getElementById('currentWeather');
 const forecastContainer = document.getElementById('forecast');
@@ -49,7 +49,9 @@ const renderWeather = (weatherData) => {
   pressure.innerText = `Pressure: ${weatherData.pressure}mbar`;
   humidity.innerText = `Humidity: ${weatherData.humidity}%`;
   windSpeed.innerText = `Wind speed: ${weatherData.windSpeed} ${windUnit}`;
-  windDeg.innerText = `Wind from: ${weatherData.windDeg}`;
+  /*  windDeg.innerText = `Wind from: ${weatherData.windDeg}`; */
+  console.log(weatherData.windDeg);
+  windDeg.innerText = `Wind from: ${getWindDirection(weatherData.windDeg)}`;
 
   currentWeatherContainer.appendChild(city);
   currentWeatherContainer.appendChild(country);

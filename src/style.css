@@ -204,11 +204,13 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 2rem;
+  transition: all 100ms linear;
 }
 
 #overlay.active {
   opacity: 1;
   pointer-events: all;
+  transition: all 100ms linear;
 }
 
 .clear-sky {

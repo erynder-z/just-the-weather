@@ -15,6 +15,7 @@ const renderWeather = (weatherData) => {
   const city = document.createElement('h1');
   city.setAttribute('id', 'currentCity');
   const country = document.createElement('h3');
+  const localTime = document.createElement('div');
   const icon = document.createElement('img');
   /* const main = document.createElement('div'); */
   const description = document.createElement('div');
@@ -32,6 +33,7 @@ const renderWeather = (weatherData) => {
 
   city.innerText = weatherData.name;
   country.innerText = weatherData.country;
+  localTime.innerText = ` local time: ${getLocalTime(weatherData.timezone)}`;
 
   if (weatherData.main === 'Clouds') {
     icon.src = getIcon(
@@ -64,6 +66,7 @@ const renderWeather = (weatherData) => {
 
   currentWeatherContainer.appendChild(city);
   currentWeatherContainer.appendChild(country);
+  currentWeatherContainer.append(localTime);
   currentWeatherContainer.append(icon);
   currentWeatherContainer.appendChild(description);
   currentWeatherContainer.appendChild(temp);
@@ -126,5 +129,14 @@ const renderForecast = (weatherForecast) => {
     conditionContainer.classList.add(element.description.replace(/\s/g, '-'));
   });
 };
+
+function getLocalTime(shiftFromUTC) {
+  const now = Date.now();
+  const timeshift = shiftFromUTC * 1000;
+  const offset = 3.6e6;
+  const formatedDate = format(now + timeshift - offset, 'HH:mm:ss');
+
+  return formatedDate;
+}
 
 export { renderWeather, renderForecast };

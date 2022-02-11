@@ -70,7 +70,7 @@ async function getCurrentWeather(location) {
 
     weatherArray.splice(0, 1, newLocation);
   } catch (error) {
-    console.log(`There has been a problem fetching your weather data:${error}`);
+    alert(`There has been a problem fetching your weather data:${error}`);
   }
 
   renderWeather(weatherArray[0]);
@@ -127,7 +127,7 @@ async function getForecast(location) {
     forecast.shift();
     renderForecast(forecast);
   } catch (error) {
-    console.log(`There has been a problem fetching your weather data:${error}`);
+    alert(`There has been a problem fetching your weather data:${error}`);
   }
   toggleOverlay();
 }

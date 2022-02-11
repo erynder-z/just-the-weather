@@ -40,10 +40,14 @@ const appInterface = (() => {
   });
 
   forecastBtnContainer.addEventListener('click', () => {
-    async function displayForecast() {
-      await getForecast(myLocation);
+    const moveContainers = () => {
       forecastBtnContainer.classList.toggle('expand');
       currentWeatherContainer.classList.toggle('move');
+    };
+
+    async function displayForecast() {
+      await getForecast(myLocation);
+      moveContainers();
       if (forecastBtnContainer.classList.contains('expand')) {
         forecastTimestamp.innerText = `as of: ${now}`;
         forecastBtnContainer.appendChild(forecastTimestamp);
@@ -60,12 +64,10 @@ const appInterface = (() => {
     } else {
       forecastTimestamp.remove();
       forecast.innerHTML = '';
-      forecastBtnContainer.classList.toggle('expand');
-      currentWeatherContainer.classList.toggle('move');
+      moveContainers();
     }
   });
 })();
 
 getCurrentWeather();
-
 toggleUnits();

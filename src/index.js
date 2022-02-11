@@ -41,9 +41,7 @@ const appInterface = (() => {
 
   forecastBtnContainer.addEventListener('click', () => {
     async function displayForecast() {
-      /*  toggleOverlay(); */
       await getForecast(myLocation);
-      /* toggleOverlay(); */
       forecastBtnContainer.classList.toggle('expand');
       currentWeatherContainer.classList.toggle('move');
       if (forecastBtnContainer.classList.contains('expand')) {
@@ -54,13 +52,18 @@ const appInterface = (() => {
         forecast.innerHTML = '';
       }
     }
-    displayForecast();
+    if (
+      document.querySelector('.forecastBtn-container').className !==
+      'forecastBtn-container expand'
+    ) {
+      displayForecast();
+    } else {
+      forecastTimestamp.remove();
+      forecast.innerHTML = '';
+      forecastBtnContainer.classList.toggle('expand');
+      currentWeatherContainer.classList.toggle('move');
+    }
   });
-
-  /*   function toggleOverlay() {
-    const overlay = document.getElementById('overlay');
-    overlay.classList.toggle('active');
-  } */
 })();
 
 getCurrentWeather();

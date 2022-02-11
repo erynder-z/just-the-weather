@@ -309,6 +309,11 @@ body {
   transition: background-color 1000ms linear;
 }
 
+.night {
+  background-color: var(--night);
+  transition: background-color 1000ms linear;
+}
+
 .dark {
   filter: invert(100%);
 }

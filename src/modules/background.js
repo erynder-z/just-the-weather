@@ -1,7 +1,16 @@
 const { body } = document;
 
-const colorizeBackground = (weatherDataDescription) => {
+const colorizeBackground = (weatherDataDescription, time, sunset, sunrise) => {
+  const isNight = (x, set, rise) => (x - set) * (x - rise) > 0;
+
   body.className = '';
+  if (isNight(time, sunset, sunrise) === true) {
+    body.classList.add('night');
+    document.getElementById('currentWeather').style.color = 'whitesmoke';
+    document.getElementById('forecast').style.color = 'whitesmoke';
+    document.getElementById('activeIcon').classList.add('dark');
+    return;
+  }
   body.classList.add(weatherDataDescription.replace(/\s/g, '-'));
 
   const substringRain = 'rain';

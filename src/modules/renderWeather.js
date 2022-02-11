@@ -80,7 +80,12 @@ const renderWeather = (weatherData) => {
   currentWeatherContainer.appendChild(windSpeed);
   currentWeatherContainer.appendChild(windDeg);
 
-  colorizeBackground(weatherData.description);
+  colorizeBackground(
+    weatherData.description,
+    weatherData.time,
+    weatherData.sunset,
+    weatherData.sunrise
+  );
 
   function runClock(timeData) {
     localTime.innerText = ` local time: ${getLocalTime(timeData)}`;

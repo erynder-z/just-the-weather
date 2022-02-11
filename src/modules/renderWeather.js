@@ -34,9 +34,19 @@ const renderWeather = (weatherData) => {
   country.innerText = weatherData.country;
 
   if (weatherData.main === 'Clouds') {
-    icon.src = getIcon(weatherData.description);
+    icon.src = getIcon(
+      weatherData.description,
+      weatherData.time,
+      weatherData.sunset,
+      weatherData.sunrise
+    );
   } else {
-    icon.src = getIcon(weatherData.main);
+    icon.src = getIcon(
+      weatherData.main,
+      weatherData.time,
+      weatherData.sunset,
+      weatherData.sunrise
+    );
   }
 
   icon.setAttribute('id', 'activeIcon');

@@ -37,7 +37,10 @@ async function getCurrentWeather(location) {
       pressure,
       humidity,
       windSpeed,
-      windDeg
+      windDeg,
+      time,
+      sunset,
+      sunrise
     ) => ({
       name,
       country,
@@ -51,6 +54,9 @@ async function getCurrentWeather(location) {
       humidity,
       windSpeed,
       windDeg,
+      time,
+      sunset,
+      sunrise,
     });
 
     const newLocation = weatherFactory(
@@ -65,7 +71,10 @@ async function getCurrentWeather(location) {
       fetchData.main.pressure,
       fetchData.main.humidity,
       fetchData.wind.speed,
-      fetchData.wind.deg
+      fetchData.wind.deg,
+      fetchData.dt,
+      fetchData.sys.sunset,
+      fetchData.sys.sunrise
     );
 
     weatherArray.splice(0, 1, newLocation);

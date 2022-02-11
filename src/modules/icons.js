@@ -8,27 +8,44 @@ import rain from '../icons/rain.png';
 import scatteredclouds from '../icons/scatteredclouds.png';
 import snow from '../icons/snow.png';
 import thunderstorm from '../icons/thunderstorm.png';
+import clearnight from '../icons/clearnight.png';
+import fewcloudsnight from '../icons/fewcloudsnight.png';
+import scatteredcloudsnight from '../icons/scatteredcloudsnight.png';
 
-const getIcon = (condition) => {
+const getIcon = (condition, time, sunset, sunrise) => {
   const weatherIcons = [
     { name: 'brokenclouds', icon: brokenclouds },
-    { name: 'clear', icon: clear },
+    { name: 'clear', icon: clear, nighticon: clearnight },
     { name: 'drizzle', icon: drizzle },
-    { name: 'fewclouds', icon: fewclouds },
+    { name: 'fewclouds', icon: fewclouds, nighticon: fewcloudsnight },
     { name: 'mist', icon: mist },
     { name: 'overcastclouds', icon: overcastclouds },
     { name: 'rain', icon: rain },
-    { name: 'scatteredclouds', icon: scatteredclouds },
+    {
+      name: 'scatteredclouds',
+      icon: scatteredclouds,
+      nighticon: scatteredcloudsnight,
+    },
     { name: 'snow', icon: snow },
     { name: 'thunderstorm', icon: thunderstorm },
   ];
+
+  const isNight = (x, set, rise) => (x - set) * (x - rise) > 0;
 
   const iconTarget = condition.replace(/\s+/g, '').toLowerCase();
   let currentIcon;
 
   weatherIcons.forEach((icon) => {
     if (icon.name === iconTarget) {
-      currentIcon = icon.icon;
+      if (isNight(time, sunset, sunrise) === true) {
+        if (!icon.nighticon) {
+          currentIcon = icon.icon;
+        } else {
+          currentIcon = icon.nighticon;
+        }
+      } else {
+        currentIcon = icon.icon;
+      }
     }
   });
 

@@ -12,14 +12,20 @@ const renderWeather = (weatherData) => {
   unit === 'imperial' ? (temperatureUnit = '°F') : (temperatureUnit = '°C');
   unit === 'imperial' ? (windUnit = 'mph') : (windUnit = 'm/s');
 
+  const cityContainer = document.createElement('div');
+  cityContainer.classList.add('city-container');
   const city = document.createElement('h1');
   city.setAttribute('id', 'currentCity');
   const country = document.createElement('h3');
   const localTime = document.createElement('div');
+  localTime.classList.add('time');
   const icon = document.createElement('img');
   /* const main = document.createElement('div'); */
+  const weatherContainer = document.createElement('div');
+  weatherContainer.classList.add('weather-container');
   const description = document.createElement('div');
   const temp = document.createElement('div');
+  temp.classList.add('temp');
   const feelsLike = document.createElement('div');
   const tempMin = document.createElement('div');
   const tempMax = document.createElement('div');
@@ -34,7 +40,7 @@ const renderWeather = (weatherData) => {
   city.innerText = weatherData.name;
   country.innerText = weatherData.country;
 
-  localTime.innerText = ` local time: ${getLocalTime(weatherData.timezone)}`;
+  localTime.innerText = getLocalTime(weatherData.timezone);
   setInterval(runClock, 1000, weatherData.timezone);
 
   if (weatherData.main === 'Clouds') {
@@ -66,19 +72,21 @@ const renderWeather = (weatherData) => {
   /*  windDeg.innerText = `Wind from: ${weatherData.windDeg}`; */
   windDeg.innerText = `Wind from: ${getWindDirection(weatherData.windDeg)}`;
 
-  currentWeatherContainer.appendChild(city);
-  currentWeatherContainer.appendChild(country);
-  currentWeatherContainer.append(localTime);
-  currentWeatherContainer.append(icon);
-  currentWeatherContainer.appendChild(description);
-  currentWeatherContainer.appendChild(temp);
-  currentWeatherContainer.appendChild(feelsLike);
-  currentWeatherContainer.appendChild(tempMax);
-  currentWeatherContainer.appendChild(tempMin);
-  currentWeatherContainer.appendChild(pressure);
-  currentWeatherContainer.appendChild(humidity);
-  currentWeatherContainer.appendChild(windSpeed);
-  currentWeatherContainer.appendChild(windDeg);
+  currentWeatherContainer.appendChild(cityContainer);
+  cityContainer.appendChild(city);
+  cityContainer.appendChild(country);
+  cityContainer.append(localTime);
+  cityContainer.append(icon);
+  currentWeatherContainer.appendChild(weatherContainer);
+  weatherContainer.appendChild(description);
+  weatherContainer.appendChild(temp);
+  weatherContainer.appendChild(feelsLike);
+  weatherContainer.appendChild(tempMax);
+  weatherContainer.appendChild(tempMin);
+  weatherContainer.appendChild(pressure);
+  weatherContainer.appendChild(humidity);
+  weatherContainer.appendChild(windSpeed);
+  weatherContainer.appendChild(windDeg);
 
   colorizeBackground(
     weatherData.description,
@@ -88,7 +96,7 @@ const renderWeather = (weatherData) => {
   );
 
   function runClock(timeData) {
-    localTime.innerText = ` local time: ${getLocalTime(timeData)}`;
+    localTime.innerText = getLocalTime(timeData);
   }
 };
 

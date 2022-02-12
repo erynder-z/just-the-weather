@@ -10,6 +10,9 @@ const toggleUnits = () => {
     const currentCity = document.getElementById('currentCity').innerHTML;
     useImperial = !useImperial;
     useImperial ? (unit = 'imperial') : (unit = 'metric');
+    useImperial
+      ? (document.getElementById('unitBtn').innerText = 'imperial')
+      : (document.getElementById('unitBtn').innerText = 'metric');
     getCurrentWeather(currentCity);
     // get forecast data when forecast was shown on click
     if (

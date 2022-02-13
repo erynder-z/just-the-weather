@@ -11,8 +11,8 @@ const toggleUnits = () => {
     useImperial = !useImperial;
     useImperial ? (unit = 'imperial') : (unit = 'metric');
     useImperial
-      ? (document.getElementById('unitBtn').innerText = '° F')
-      : (document.getElementById('unitBtn').innerText = '° C');
+      ? (document.getElementById('unitBtn').innerText = '° C')
+      : (document.getElementById('unitBtn').innerText = '° F');
     getCurrentWeather(currentCity);
     // get forecast data when forecast was shown on click
     if (

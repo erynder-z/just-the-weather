@@ -5,10 +5,11 @@ import { unit } from './units';
 let myLocation;
 const weatherArray = [];
 
-function toggleOverlay() {
+// show an "loading"-overlay
+const toggleOverlay = () => {
   const overlay = document.getElementById('overlay');
   overlay.classList.toggle('active');
-}
+};
 
 async function getCurrentWeather(location) {
   toggleOverlay();

@@ -2,7 +2,6 @@ import 'normalize.css';
 import './style.css';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
-import { format } from 'date-fns';
 import {
   getCurrentWeather,
   getForecast,
@@ -16,7 +15,6 @@ const appInterface = (() => {
   const currentWeatherContainer = document.getElementById('currentWeather');
   const forecastBtnContainer = document.querySelector('.forecastBtn-container');
   const forecast = document.getElementById('forecast');
-  /* const now = format(new Date(), 'dd.MM@H:mm:ss'); */
   const forecastTimestamp = document.createElement('div');
 
   searchButton.addEventListener('click', () => {
@@ -48,13 +46,6 @@ const appInterface = (() => {
     async function displayForecast() {
       await getForecast(myLocation);
       moveContainers();
-      if (forecastBtnContainer.classList.contains('expand')) {
-        /*         forecastTimestamp.innerText = `as of: ${now}`;
-        forecastBtnContainer.appendChild(forecastTimestamp); */
-      } else {
-        /*    forecastTimestamp.remove(); */
-        forecast.innerHTML = '';
-      }
     }
     if (
       document.querySelector('.forecastBtn-container').className !==

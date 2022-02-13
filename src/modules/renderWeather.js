@@ -1,6 +1,7 @@
 import { fromUnixTime, format } from 'date-fns';
 import colorizeBackground from './background';
 import { getIcon } from './icons';
+import { getLocalTime } from './time';
 import { getWindDirection, unit } from './units';
 
 const currentWeatherContainer = document.getElementById('currentWeather');
@@ -20,7 +21,6 @@ const renderWeather = (weatherData) => {
   const localTime = document.createElement('div');
   localTime.classList.add('time');
   const icon = document.createElement('img');
-  /* const main = document.createElement('div'); */
   const weatherContainer = document.createElement('div');
   weatherContainer.classList.add('weather-container');
   const description = document.createElement('div');
@@ -43,6 +43,7 @@ const renderWeather = (weatherData) => {
   localTime.innerText = getLocalTime(weatherData.timezone);
   setInterval(runClock, 1000, weatherData.timezone);
 
+  // if weather is "clouds", get icon based on "description" parameter instead of "main"
   if (weatherData.main === 'Clouds') {
     icon.src = getIcon(
       weatherData.description,
@@ -69,7 +70,6 @@ const renderWeather = (weatherData) => {
   pressure.innerText = `Pressure: ${weatherData.pressure}mbar`;
   humidity.innerText = `Humidity: ${weatherData.humidity}%`;
   windSpeed.innerText = `Wind speed: ${weatherData.windSpeed} ${windUnit}`;
-  /*  windDeg.innerText = `Wind from: ${weatherData.windDeg}`; */
   windDeg.innerText = `Wind from: ${getWindDirection(weatherData.windDeg)}`;
 
   currentWeatherContainer.appendChild(cityContainer);
@@ -145,17 +145,9 @@ const renderForecast = (weatherForecast) => {
     detailsContainer.appendChild(tempMin);
     detailsContainer.appendChild(humidity);
 
+    // color right-side container in forecast according to weather condition
     conditionContainer.classList.add(element.description.replace(/\s/g, '-'));
   });
 };
-
-function getLocalTime(shiftFromUTC) {
-  const now = Date.now();
-  const timeshift = shiftFromUTC * 1000;
-  const offset = 3.6e6;
-  const formatedDate = format(now + timeshift - offset, 'HH:mm:ss');
-
-  return formatedDate;
-}
 
 export { renderWeather, renderForecast };

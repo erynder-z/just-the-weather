@@ -1,9 +1,10 @@
+import { isNight } from './time';
+
 const { body } = document;
-
+// colorize background according to weather and time
 const colorizeBackground = (weatherDataDescription, time, sunset, sunrise) => {
-  const isNight = (x, set, rise) => (x - set) * (x - rise) > 0;
-
   body.className = '';
+  // white text during night
   if (isNight(time, sunset, sunrise) === true) {
     body.classList.add('night');
     document.getElementById('currentWeather').style.color = 'whitesmoke';
@@ -13,6 +14,7 @@ const colorizeBackground = (weatherDataDescription, time, sunset, sunrise) => {
   }
   body.classList.add(weatherDataDescription.replace(/\s/g, '-'));
 
+  // white text when background is dark
   const substringRain = 'rain';
   if (
     weatherDataDescription.replace(/\s/g, '-') === 'few-clouds' ||

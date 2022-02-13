@@ -11,6 +11,7 @@ import thunderstorm from '../icons/thunderstorm.png';
 import clearnight from '../icons/clearnight.png';
 import fewcloudsnight from '../icons/fewcloudsnight.png';
 import scatteredcloudsnight from '../icons/scatteredcloudsnight.png';
+import { isNight } from './time';
 
 const getIcon = (condition, time, sunset, sunrise) => {
   const weatherIcons = [
@@ -30,8 +31,7 @@ const getIcon = (condition, time, sunset, sunrise) => {
     { name: 'thunderstorm', icon: thunderstorm },
   ];
 
-  const isNight = (x, set, rise) => (x - set) * (x - rise) > 0;
-
+  // select icon accorgding to weather condition and time
   const iconTarget = condition.replace(/\s+/g, '').toLowerCase();
   let currentIcon;
 

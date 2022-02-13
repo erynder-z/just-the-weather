@@ -8,6 +8,7 @@ import {
   myLocation,
 } from './modules/getWeather';
 import { toggleUnits } from './modules/units';
+import toggleModal from './modules/modal';
 
 const appInterface = (() => {
   const searchbar = document.getElementById('searchInput');
@@ -62,3 +63,4 @@ const appInterface = (() => {
 
 getCurrentWeather();
 toggleUnits();
+toggleModal;

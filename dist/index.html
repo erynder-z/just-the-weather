@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="main.js" defer></script>
-    <title>Weather App</title>
+    <title>Just The Weather</title>
   </head>
   <body>
     <div class="head-container">
@@ -22,16 +22,42 @@
           </button>
         </form>
       </div>
-      <button type="button" id="unitBtn" class="unit-button">metric</button>
+      <div class="button-wrapper">
+        <button type="button" id="unitBtn" class="unit-button">° C</button>
+        <button
+          data-modal-target="#modal"
+          type="button"
+          id="aboutBtn"
+          class="about-button"
+        >
+          about
+        </button>
+        <div id="modal" class="modal">
+          <div class="modal-header">
+            <div class="title">About this app</div>
+            <button class="close-button" data-close-button>&times;</button>
+          </div>
+          <div class="modal-body">
+            <h4>Just the weather - a simple weather app</h4>
+            <h4>
+              Weather data from:
+              <a href="https://openweathermap.org/">openweathermap.org</a>
+            </h4>
+            <h4>Created by Erynder-Z</h4>
+            <h4><a href="https://github.com/erynder-z">My GitHub</a></h4>
+          </div>
+        </div>
+      </div>
     </div>
     <div id="currentWeather" class="current-weather-container move"></div>
     <div class="forecastBtn-container">
       <button type="button" id="forecastBtn" class="forecast-button">
-        7-Day forecast
+        7-day forecast
       </button>
       <div id="expandIcon" class="expand-icon">▲</div>
     </div>
     <div id="forecast" class="forecast-container"></div>
     <div id="overlay">loading weather data</div>
+    <div id="modalOverlay"></div>
   </body>
 </html>

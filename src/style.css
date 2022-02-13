@@ -368,7 +368,7 @@ body {
 
   h1 {
     font-size: 1.5rem;
-    margin: 1rem 0 0.5rem 0;
+    /* margin: 1rem 0 0.5rem 0; */
   }
 
   h3 {
@@ -404,7 +404,7 @@ body {
 
   .current-weather-container > .city-container > h1 {
     position: relative;
-    left: 1rem;
+    left: 3rem;
     bottom: 1rem;
   }
 
@@ -426,12 +426,12 @@ body {
 
   .time {
     font-size: 2rem;
-    left: 5rem;
+    left: 3rem;
     top: 2rem;
   }
 
   .icon {
-    right: 3rem;
+    right: 4rem;
     bottom: 2rem;
   }
 

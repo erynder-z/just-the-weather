@@ -13,4 +13,4 @@ Features:
 - Current city is saved via localstorage
 
 Live:  
-https://erynder-z.github.io/weather-app/
+https://erynder-z.github.io/just-the-weather/

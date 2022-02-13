@@ -131,9 +131,9 @@ const renderForecast = (weatherForecast) => {
     day.innerText = formatedDateDay;
     date.innerText = formatedDate;
     description.innerText = element.description;
-    tempMax.innerText = `Max: ${element.tempMax}${temperatureUnit}`;
-    tempMin.innerText = `Min: ${element.tempMin}${temperatureUnit}`;
-    humidity.innerText = `Humidity: ${element.humidity}%`;
+    tempMax.innerText = `↑ ${element.tempMax}${temperatureUnit}`;
+    tempMin.innerText = `↓ ${element.tempMin}${temperatureUnit}`;
+    humidity.innerText = `${element.humidity}% RH`;
     forecastContainer.appendChild(dayForecastContainer);
     dayForecastContainer.appendChild(conditionContainer);
     dayForecastContainer.appendChild(detailsContainer);

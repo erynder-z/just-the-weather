@@ -16,7 +16,7 @@ const appInterface = (() => {
   const currentWeatherContainer = document.getElementById('currentWeather');
   const forecastBtnContainer = document.querySelector('.forecastBtn-container');
   const forecast = document.getElementById('forecast');
-  const now = format(new Date(), 'dd.MM@H:mm:ss');
+  /* const now = format(new Date(), 'dd.MM@H:mm:ss'); */
   const forecastTimestamp = document.createElement('div');
 
   searchButton.addEventListener('click', () => {
@@ -49,10 +49,10 @@ const appInterface = (() => {
       await getForecast(myLocation);
       moveContainers();
       if (forecastBtnContainer.classList.contains('expand')) {
-        forecastTimestamp.innerText = `as of: ${now}`;
-        forecastBtnContainer.appendChild(forecastTimestamp);
+        /*         forecastTimestamp.innerText = `as of: ${now}`;
+        forecastBtnContainer.appendChild(forecastTimestamp); */
       } else {
-        forecastTimestamp.remove();
+        /*    forecastTimestamp.remove(); */
         forecast.innerHTML = '';
       }
     }

@@ -1,6 +1,6 @@
 Just the weather - A simple weather app.
 
-A simple weather app powered by JavaScript and the Openweathermap API.
+A simple weather app powered by JavaScript and the Openweathermap API.  
 https://openweathermap.org/api
 
 Features:
@@ -12,4 +12,5 @@ Features:
 - Layout for desktop and mobile
 - Current city is saved via localstorage
 
-Live: https://erynder-z.github.io/weather-app/
+Live:  
+https://erynder-z.github.io/weather-app/

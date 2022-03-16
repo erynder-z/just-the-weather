@@ -13,6 +13,9 @@ const colorizeBackground = (weatherDataDescription, time, sunset, sunrise) => {
     document.getElementById('activeIcon').classList.add('dark');
     return;
   }
+  document.getElementById('forecastBtn').style.color = 'black';
+  document.getElementById('expandIcon').style.color = 'black';
+
   body.classList.add(weatherDataDescription.replace(/\s/g, '-'));
 
   // white text when background is dark

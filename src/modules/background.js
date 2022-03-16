@@ -26,9 +26,13 @@ const colorizeBackground = (weatherDataDescription, time, sunset, sunrise) => {
   ) {
     document.getElementById('currentWeather').style.color = 'whitesmoke';
     document.getElementById('activeIcon').classList.add('dark');
+    document.getElementById('forecastBtn').style.color = 'whitesmoke';
+    document.getElementById('expandIcon').style.color = 'whitesmoke';
   } else {
     document.getElementById('currentWeather').style.color = 'black';
     document.getElementById('activeIcon').classList.remove('dark');
+    document.getElementById('forecastBtn').style.color = 'black';
+    document.getElementById('expandIcon').style.color = 'black';
   }
 };
 

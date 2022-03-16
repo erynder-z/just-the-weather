@@ -33,6 +33,7 @@ body {
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr 1fr;
+  height: 5vh;
   background-color: rgba(0, 0, 0, 0.2);
 }
 
@@ -146,7 +147,7 @@ body {
   height: 5rem;
   background-image: linear-gradient(
     to bottom,
-    rgba(255, 0, 0, 0),
+    rgba(220, 20, 60, 0),
     rgba(220, 20, 60, 0.5)
   );
 
@@ -170,7 +171,7 @@ body {
 .forecast-button {
   background: none;
   border: none;
-  text-shadow: 0 0 2px #00000080;
+  text-shadow: 0 2px 2px #00000080;
 }
 
 .forecast-container {
@@ -457,7 +458,7 @@ body {
   filter: invert(100%);
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   form {
     display: flex;
   }
@@ -473,6 +474,7 @@ body {
 
   .head-container {
     grid-template-columns: 1fr 1fr;
+    font-size: small;
   }
 
   .button-wrapper {
@@ -493,14 +495,20 @@ body {
   }
 
   .current-weather-container {
-    margin-top: 1.5rem;
+    /*  margin-top: 1.5rem; */
     flex-direction: column;
     align-items: center;
     padding: 1rem 1rem;
+    height: 50vh;
+    min-height: 50vh;
+  }
+
+  .city-container {
+    gap: 0;
   }
 
   .current-weather-container.move > .city-container {
-    gap: none;
+    gap: 0;
   }
 
   .current-weather-container.move > .city-container > h1 {
@@ -548,14 +556,15 @@ body {
 
   .forecastBtn-container.expand {
     line-height: 0.8rem;
-    padding: 2rem 0;
+    height: 5vh;
+    /*   padding: 2rem 0; */
   }
 
   .forecastBtn-container.expand ~ .forecast-container {
     justify-content: flex-start;
     align-items: flex-start;
     overflow-x: scroll;
-    height: unset;
+    height: 40vh;
   }
 
   .day-container {

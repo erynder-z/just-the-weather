@@ -38,9 +38,11 @@ const colorizeBackground = (weatherDataDescription, time, sunset, sunrise) => {
 
 const colorizeForecast = (weatherDataDescription) => {
   const substringRain = 'rain';
+  const substringSnow = 'snow';
   if (
     weatherDataDescription.replace(/\s/g, '-') === 'few-clouds' ||
-    weatherDataDescription.includes(substringRain)
+    (weatherDataDescription.includes(substringRain) &&
+      !weatherDataDescription.includes(substringSnow))
   ) {
     return true;
   }

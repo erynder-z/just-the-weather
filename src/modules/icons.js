@@ -31,7 +31,7 @@ const getIcon = (condition, time, sunset, sunrise) => {
     { name: 'thunderstorm', icon: thunderstorm },
   ];
 
-  // select icon accorgding to weather condition and time
+  // select icon according to weather condition and time
   const iconTarget = condition.replace(/\s+/g, '').toLowerCase();
   let currentIcon;
 

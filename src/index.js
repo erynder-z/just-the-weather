@@ -1,7 +1,5 @@
 import 'normalize.css';
 import './style.css';
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
 import {
   getCurrentWeather,
   getForecast,

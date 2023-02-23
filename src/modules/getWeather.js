@@ -1,6 +1,7 @@
 import { populateStorage, retrieveStorage } from './storage';
 import { renderWeather, renderForecast } from './renderWeather';
 import { unit } from './units';
+import 'regenerator-runtime/runtime';
 
 let myLocation;
 const weatherArray = [];

@@ -1,5 +1,7 @@
 import 'normalize.css';
 import './style.css';
+
+// Internal modules
 import {
   getCurrentWeather,
   getForecast,
@@ -8,57 +10,58 @@ import {
 import { toggleUnits } from './modules/units';
 import toggleModal from './modules/modal';
 
-const appInterface = (() => {
-  const searchbar = document.getElementById('searchInput');
-  const searchButton = document.getElementById('searchBtn');
-  const currentWeatherContainer = document.getElementById('currentWeather');
-  const forecastBtnContainer = document.querySelector('.forecastBtn-container');
-  const forecast = document.getElementById('forecast');
-  const forecastTimestamp = document.createElement('div');
+// DOM elements
+const searchbar = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchBtn');
+const currentWeatherContainer = document.getElementById('currentWeather');
+const forecastBtnContainer = document.querySelector('.forecastBtn-container');
+const forecast = document.getElementById('forecast');
+const forecastTimestamp = document.createElement('div');
 
-  searchButton.addEventListener('click', () => {
-    const currentCity = document.getElementById('currentCity').innerHTML;
-    const query = searchbar.value;
-    searchbar.value = '';
-    getCurrentWeather(query);
-    if (
-      document.querySelector('.forecastBtn-container').className ===
-      'forecastBtn-container expand'
-    ) {
-      getForecast(currentCity);
-    }
-  });
+// Event listeners
+searchButton.addEventListener('click', handleSearch);
+searchbar.addEventListener('keydown', handleSearchKeyDown);
+forecastBtnContainer.addEventListener('click', handleForecastBtnClick);
 
-  searchbar.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      searchButton.click();
-    }
-  });
+// Functions
+async function displayForecast() {
+  const currentCity = document.getElementById('currentCity').innerHTML;
+  await getForecast(currentCity);
+  moveContainers();
+}
 
-  forecastBtnContainer.addEventListener('click', () => {
-    const moveContainers = () => {
-      forecastBtnContainer.classList.toggle('expand');
-      currentWeatherContainer.classList.toggle('move');
-    };
+function handleSearch() {
+  const query = searchbar.value;
+  searchbar.value = '';
+  getCurrentWeather(query);
+  if (forecastBtnContainer.classList.contains('expand')) {
+    getForecast(myLocation);
+  }
+}
 
-    async function displayForecast() {
-      await getForecast(myLocation);
-      moveContainers();
-    }
-    if (
-      document.querySelector('.forecastBtn-container').className !==
-      'forecastBtn-container expand'
-    ) {
-      displayForecast();
-    } else {
-      forecastTimestamp.remove();
-      forecast.innerHTML = '';
-      moveContainers();
-    }
-  });
-})();
+function handleSearchKeyDown(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    searchButton.click();
+  }
+}
 
-getCurrentWeather();
+function handleForecastBtnClick() {
+  if (forecastBtnContainer.classList.contains('expand')) {
+    forecastTimestamp.remove();
+    forecast.innerHTML = '';
+    moveContainers();
+  } else {
+    displayForecast();
+  }
+}
+
+function moveContainers() {
+  forecastBtnContainer.classList.toggle('expand');
+  currentWeatherContainer.classList.toggle('move');
+}
+
+// Initialization
+getCurrentWeather(myLocation);
 toggleUnits();
-toggleModal;
+toggleModal();

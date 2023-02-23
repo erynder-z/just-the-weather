@@ -111,8 +111,6 @@ const renderForecast = (weatherForecast) => {
   weatherForecast.forEach((element) => {
     const dayForecastContainer = document.createElement('div');
     dayForecastContainer.classList.add('day-container');
-    /*    const conditionContainer = document.createElement('div');
-    conditionContainer.classList.add('status'); */
     const detailsContainer = document.createElement('div');
     detailsContainer.classList.add('forecast-details');
     const day = document.createElement('div');
@@ -135,7 +133,6 @@ const renderForecast = (weatherForecast) => {
     tempMin.innerText = `↓ ${element.tempMin}${temperatureUnit}`;
     humidity.innerText = `${element.humidity}% RH`;
     forecastContainer.appendChild(dayForecastContainer);
-    /* dayForecastContainer.appendChild(conditionContainer); */
     dayForecastContainer.appendChild(detailsContainer);
     detailsContainer.appendChild(day);
     detailsContainer.appendChild(date);
@@ -149,9 +146,6 @@ const renderForecast = (weatherForecast) => {
     if (colorizeForecast(element.description) === true) {
       dayForecastContainer.style.color = 'whitesmoke';
     }
-
-    // color right-side container in forecast according to weather condition
-    /*  conditionContainer.classList.add(element.description.replace(/\s/g, '-')); */
   });
 };
 
